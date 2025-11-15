@@ -37,6 +37,20 @@ export const useLogin = () => {
     });
 };
 
+export const useLogout = () => {
+    return useMutation({
+        mutationFn: async () => {
+            const res = await axios.post(
+                "http://localhost:5500/api/logout",
+                {},
+                { withCredentials: true }
+            );
+            return res.data;
+        },
+        retry: false,
+    });
+};
+
 export const useValidUser = () => {
     return useQuery<LoginResponse>({
         queryKey: ["valid-user"],

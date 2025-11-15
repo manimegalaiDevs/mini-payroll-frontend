@@ -1,24 +1,30 @@
-import React from "react";
+import Sidebar from "./Sidebar";
+import Header from "./Header";
 import { Outlet } from "react-router-dom";
-// import Sidebar from "../components/Sidebar";
-// import Header from "../components/Header";
+import { useState } from "react";
 
-const PrivateLayout: React.FC = () => {
+const PrivateLayout = () => {
+    const [collapsed, setCollapsed] = useState(false);
+
     return (
-        <div className="flex min-h-screen">
-            {/* Sidebar */}
-            {/* <Sidebar /> */}
-            Sidebar
+        <div className="flex">
+            <div className="fixed left-0 top-0 h-screen z-40">
+                <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+            </div>
 
-            <div className="flex-1 flex flex-col">
-                {/* Header */}
-                Header
-                {/* <Header /> */}
+            <div
+                className={`flex-1 min-h-screen bg-[#F7F9FC] transition-all duration-300
+                ${collapsed ? "ml-[104px]" : "ml-[256px]"}
+            `}
+            >
+                <div className="sticky top-0 z-30 bg-white">
+                    <Header />
+                </div>
 
-                {/* Page Content */}
-                <main className="flex-1 p-6 bg-gray-50">
+                {/* PAGE CONTENT */}
+                <div className="bg-white">
                     <Outlet />
-                </main>
+                </div>
             </div>
         </div>
     );

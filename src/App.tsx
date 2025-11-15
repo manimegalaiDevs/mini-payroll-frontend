@@ -6,6 +6,7 @@ import { useValidUser } from "./Auth/queries";
 import { userStore } from "./Auth/Store";
 import { Loader2 } from "lucide-react";
 import PrivateLayout from "./Auth/PrivateLayout";
+import { StaffDetailsIndex } from "./StaffDetails/index";
 
 const queryClient = new QueryClient();
 
@@ -29,9 +30,15 @@ function AppContent() {
         navigate("/", { replace: true });
       }
     }
+
+    if (isError) {
+      userStore.value = null;
+      if (location.pathname !== "/") {
+        navigate("/", { replace: true });
+      }
+    }
   }, [data, isLoading, isError, navigate, location]);
 
-  // Show a loader while checking session
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen text-[#154579] text-lg">
@@ -47,7 +54,7 @@ function AppContent() {
       {/* Protected Routes */}
       <Route element={<PrivateLayout />}>
         <Route path="/dashboard" element={<div>Dashboard</div>} />
-        <Route path="/profile" element={<div>Profile Page</div>} />
+        <Route path="/staff-details" element={<StaffDetailsIndex />} />
       </Route>
       <Route path="*" element={<div>404 - Page Not Found</div>} />
     </Routes>
