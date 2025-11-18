@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Search, ChevronDown, LogOut } from "lucide-react";
 import { useLogout } from "./queries";
-import { userStore } from "./Store";
+import { userStore } from "./store";
 
 const Header: React.FC = () => {
     const [openMenu, setOpenMenu] = useState(false);
@@ -31,7 +31,7 @@ const Header: React.FC = () => {
     }, []);
 
     return (
-        <header className="h-[90px] bg-white border-b flex items-center justify-end gap-6 px-6">
+        <header className="h-[75px] bg-white border-b flex items-center justify-end gap-6 px-6">
             {/* LEFT AREA */}
             <div>
                 <div className="flex items-center bg-gray-100 px-3 py-2 rounded-lg w-80">

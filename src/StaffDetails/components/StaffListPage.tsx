@@ -1,19 +1,24 @@
-import { Search, Pencil, ArrowRight, Plus } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Search, Pencil, ArrowRight, Plus, User } from "lucide-react";
+import { staffPageSignal } from "../store";
+import { useSignals } from "@preact/signals-react/runtime";
 
 const StaffListPage = () => {
+    useSignals();
     return (
         <div className="p-6">
             {/* Page title + Add button */}
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-xl font-semibold">Staff Details Management</h1>
 
-                <Link
-                    to="/staff/add"
+                <button
+
                     className="px-4 py-2 bg-[#0d3b78] text-white rounded-md shadow hover:bg-[#0b2f63] flex items-center gap-2"
+                    onClick={() => {
+                        staffPageSignal.value = "StaffAdding";
+                    }}
                 >
                     <Plus size={18} /> Add New Staff
-                </Link>
+                </button>
             </div>
 
             {/* Search box */}
@@ -33,23 +38,31 @@ const StaffListPage = () => {
             <div className="space-y-5">
                 {Array(6)
                     .fill(0)
-                    .map((_, i) => (
-                        <div className="border rounded-xl p-5 flex items-center justify-between bg-white shadow-sm">
+                    .map((_, index) => (
+                        <div key={index} className="border rounded-xl p-5 flex items-center justify-between bg-white shadow-sm">
                             {/* Left section */}
                             <div className="flex items-start gap-4">
-                                {/* Avatar */}
-                                <img
+                                {/* <img
                                     src="https://via.placeholder.com/60"
-                                    className="w-14 h-14 rounded-full object-cover"
-                                />
+                                    className="w-[40px] h-[40px] rounded-full object-cover"
+                                /> */}
+                                <div className="w-[40px] h-[40px] rounded-full bg-[#F3F6FB] flex items-center justify-center text-[#0d3b78]">
+                                    <User size={20} />
+                                </div>
 
                                 {/* Staff Info */}
                                 <div>
-                                    <h2 className="font-semibold text-lg">John Doe</h2>
+                                    <h2 className="font-medium text-base">John Doe</h2>
 
                                     <div className="text-sm text-gray-600 space-y-1">
-                                        <p>NIC: 123383GSDG</p>
-                                        <p>Employee no: EN214397h</p>
+                                        <p>
+                                            <span className="text-black">NIC:</span>{" "}
+                                            <span className="text-gray-600 font-normal">123383GSDG</span>
+                                        </p>
+                                        <p>
+                                            <span className="text-black">Employee no:</span>{" "}
+                                            <span className="text-gray-600 font-normal">EN214397h</span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -57,21 +70,24 @@ const StaffListPage = () => {
                             {/* Middle section */}
                             <div className="grid grid-cols-2 gap-x-10 gap-y-1 text-sm text-gray-700">
                                 <p>
-                                    <span className="font-semibold">Contact:</span> 243979475
+                                    <span className="text-black">Contact:</span>{" "}
+                                    <span className="text-gray-600 font-normal">243979475</span>
                                 </p>
                                 <p>
-                                    <span className="font-semibold">Division:</span> Colombo
-                                </p>
-
-                                <p>
-                                    <span className="font-semibold">Station:</span> GH Hospital
+                                    <span className="text-black">Division:</span>{" "}
+                                    <span className="text-gray-600 font-normal">Colombo</span>
                                 </p>
                                 <p>
-                                    <span className="font-semibold">Address:</span> 123 Main Street, Colombo
+                                    <span className="text-black">Station:</span>{" "}
+                                    <span className="text-gray-600 font-normal">GH Hospital</span>
                                 </p>
-
                                 <p>
-                                    <span className="font-semibold">District:</span> Colombo
+                                    <span className="text-black">Address:</span>{" "}
+                                    <span className="text-gray-600 font-normal">123 Main Street, Colombo</span>
+                                </p>
+                                <p>
+                                    <span className="text-black">District:</span>{" "}
+                                    <span className="text-gray-600 font-normal">Colombo</span>
                                 </p>
                             </div>
 

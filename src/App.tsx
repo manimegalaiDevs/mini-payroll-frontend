@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
 import LoginPage from "./Auth/Login";
 import { useValidUser } from "./Auth/queries";
-import { userStore } from "./Auth/Store";
+import { userStore } from "./Auth/store";
 import { Loader2 } from "lucide-react";
 import PrivateLayout from "./Auth/PrivateLayout";
 import { StaffDetailsIndex } from "./StaffDetails/index";

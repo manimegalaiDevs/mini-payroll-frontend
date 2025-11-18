@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CircleUser, Lock, ExternalLink } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useLogin } from "./queries";
-import { userStore } from "./Store";
+import { userStore } from "./store";
 import { Loader2 } from "lucide-react";
 
 const LoginPage: React.FC = () => {

@@ -41,7 +41,7 @@ const Sidebar: React.FC<Props> = ({ collapsed, setCollapsed }) => {
                 className={`h-screen bg-white border-r transition-all duration-300
                 ${collapsed ? "w-[104px]" : "w-[256px]"}`}
             >
-                <div className="p-4 flex flex-col">
+                <div className="flex flex-col">
                     <div className={`${collapsed ? "w-[60px]" : "w-[170px]"} h-[40px] rounded m-auto mb-4 mt-4 bg-[#C4C4C4]`}>
                         <div className="w-full h-full flex items-center justify-center font-bold text-lg">
                             LOGO
@@ -74,7 +74,7 @@ const Sidebar: React.FC<Props> = ({ collapsed, setCollapsed }) => {
                     </div>
 
                     {/* MENU ITEMS */}
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1 p-4 pr-0">
                         {menuItems.map((item, i) => {
                             const active = pathname === item.path;
 
